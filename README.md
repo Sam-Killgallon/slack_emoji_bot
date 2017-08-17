@@ -1,12 +1,22 @@
 # slack_emoji_bot
 Convert words into emojis!
-Give it an emoji and a phrase, it will print out the word using the emoji to generate letters
+Give it an emoji and a phrase, it will print out the word using the emoji to generate letters.
 
 # Setup
 `bundle install`
 
 # Run
+Create a bot on slack (ie `emojibot`)
+
+Start the bot:
 `SLACK_API_TOKEN=bot-token bundle exec ruby emoji_bot.rb`
+
+Invite into a slack channel and type
+`emojibot :gear: Hi`
+
+or direct message
+
+`:gear: hi`
 
 # Issues
 Because emojis are different sizes, and spaces cant always equal the width of an emoji, the characters may look slightly wonky.
