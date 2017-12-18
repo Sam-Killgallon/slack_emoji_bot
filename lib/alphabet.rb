@@ -233,4 +233,3 @@ class Alphabet
     }
   end
 end
-

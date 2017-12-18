@@ -1,18 +1,15 @@
-require 'pry'
 require 'slack-ruby-bot'
-require_relative 'slack_printer'
-require_relative 'alphabet'
-require_relative 'say'
+require 'printer/slack_bot'
+require 'alphabet'
+require 'emoji_say'
 
 SlackRubyBot::Client.logger.level = Logger::WARN
 
 class EmojiBot < SlackRubyBot::Bot
   match /(?<emoji>(:.*:)) (?<word>.*)/ do |client, data, match|
     alphabet = Alphabet.new(match[:emoji], ' ' * 6)
-    printer = SlackPrinter.new(client, data.channel)
+    printer = Printer::SlackBot.new(client, data.channel)
 
-    Say.new(alphabet, printer).word(match[:word])
+    EmojiSay.new(alphabet, printer).say(match[:word])
   end
 end
-
-EmojiBot.run
